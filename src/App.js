@@ -16,6 +16,9 @@ function App() {
   const search = (e) => {
     if (e.key === "Enter") {
       axios(apiUrl + "&s=" + state.s).then(({ data }) => {
+        
+        if(data.Error)  return alert('Movie not found!');
+        
         let results = data.Search;
 
         setState((prevState) => {
